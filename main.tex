@@ -1,0 +1,64 @@
+\documentclass{report}
+\usepackage[twoside,a4paper,width=150mm,headheight=110pt,top=25mm,bottom=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{pgffor} 
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{graphics} 
+\usepackage{fancyhdr}
+\graphicspath{{./Images/}}
+
+\usepackage{biblatex}
+\addbibresource{main.bib}
+
+\usepackage[table,xcdraw, dvipsnames]{xcolor}
+
+\definecolor{mycolor}{RGB}{30,75,180}
+\definecolor{mycolor2}{RGB}{40,75,90}
+
+\usepackage[colorlinks = true,
+            linkcolor = mycolor,
+            urlcolor  = mycolor,
+            citecolor = mycolor,
+            anchorcolor = mycolor]{hyperref}
+
+\usepackage[hypcap=true,font={small,it}]{caption}
+\captionsetup{belowskip=2pt,aboveskip=2pt}
+
+\renewcommand{\chaptername}{}
+\renewcommand{\contentsname}{Sumário}
+\renewcommand{\figurename}{Imagem}
+\renewcommand{\figureautorefname}{figure} % lower case default ref
+\renewcommand{\tableautorefname}{table} % lower case default ref
+\newcommand{\latex}{\LaTeX\xspace}
+\newcommand{\mcite}[1]{\textcolor{mycolor}{\citeauthor{#1} (\citeyear{#1})}}
+\newcommand{\hcite}[1]{(\textcolor{mycolor}{\citeauthor{#1}, \citeyear{#1}})}
+%----------------------------------------------------------------------------------------------------%
+
+%--------------------------------------------- DOCUMENT ---------------------------------------------%
+\begin{document}
+%\fancyhead[RO,LE]{}
+
+% Title page
+    \input{sections/cover}
+    \input{sections/blank_page}
+
+% Table of contents, list of figures, and list of tables
+    {\hypersetup{linkcolor=black}
+        \tableofcontents
+        {\hypersetup{linkcolor=mycolor}}
+    }
+
+    \input{sections/dedictation}
+    \input{sections/abstract}
+    \input{sections/abbreviation}
+    \input{sections/symbols}
+    \input{sections/introduction}
+    \input{sections/concepts}
+    \input{sections/conclusion}
+
+    \printbibliography[title={Bibliografia}]
+\end{document}
+%----------------------------------------------------------------------------------------------------%
